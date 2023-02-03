@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @SpringBootApplication
 public class EnchereApplication {
-    @Bean
+    /*@Bean
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {
             @Override
@@ -18,7 +18,7 @@ public class EnchereApplication {
                 registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").allowedOrigins("*").allowedMethods("*").allowedHeaders("*").maxAge(-1).allowCredentials(false);
             }
         };
-    }
+    } */
     public static void main(String[] args) {
         SpringApplication.run(EnchereApplication.class, args);
     }
