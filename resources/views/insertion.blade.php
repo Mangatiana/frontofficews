@@ -2,13 +2,14 @@
 <html>
 
 <head>
+  <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
   <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="IA, AI, information" />
   <meta name="description" content="site informations sur intelligence artificielle" />
   <meta name="author" content="" />
 
@@ -63,7 +64,7 @@
       </div>
     </header>
     <!-- end header section -->
-</div>
+  </div>
 
   <!-- contact section -->
 
@@ -73,33 +74,79 @@
         <div class="custom_heading-container">
           <hr>
           <h2>
-            Login
+            Insertion
           </h2>
         </div>
       </div>
       <div class="layout_padding-top layout_padding2-bottom">
         <div class="row">
           <div class="col-md-7">
+            <form action="{{route('inserer')}}" method="post" enctype="multipart/form-data">
 
-            <form action="{{route('connecter')}}" method="post">
-            @csrf
+              @csrf
+
               <div class="contact_form-container">
                 <div>
                   <div>
-                    <input type="text" placeholder="User" name="user" value="momo">
+                    <input type="text" placeholder="Titre" name="titre">
                   </div>
                   <div class="">
-                    <input type="text" placeholder="Mot de passe" name="mdp" value="1437">
+                    <input type="text" placeholder="Sous titre" name="sous_titre">
                   </div>
+
+                  <br/>
+
+                  <div class="col-12">
+                      <label for="editor" class="form-label">Contenu:</label>
+                      <div class="input-group has-validation">
+                        <textarea  name="description" class="form-control" id="editor" name="description" required>
+                        </textarea>
+                        <script>CKEDITOR.replace('editor')</script>
+                        <div class="invalid-feedback">Veuillez entrez le contenu!</div>
+                      </div>
+                  </div>
+                  <br/>
+
+                  <div class="col-12">
+                      <label for="Photo" class="form-label">Photo:</label>
+                      <input type="file" name="photo" class="form-control" id="photo" required>
+                      <div class="invalid-feedback">Veuillez entrez une photo!</div>
+                  </div>
+
+                  <div>
+                    <input type="text" placeholder="Legende" name="legende">
+                  </div>
+
+                  <div>
+                    <input type="text" placeholder="Source" name="source">
+                  </div>
+
+                  <div class="col-12">
+                    Categorie:
+                    <div class="">
+                      <select name="categorie">
+                      @foreach($listCat as $cat)
+                        <option value="{{ $cat->idcategorie }}">{{ $cat->label }}</option>
+                      @endforeach
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="mt-5">
                     <button type="submit">
-                      Connecter
+                      Inserer
                     </button>
                   </div>
+
+                  <?php
+                    if(isset($succes)){
+                      echo("<p style='color:green;'> Ajouté avec succes </p>");
+                    }
+                  ?>
                 </div>
               </div>
-            </form>
 
+            </form>
           </div>
           <div class="col-md-5">
 
@@ -113,40 +160,16 @@
 
   <!-- end contact section -->
 
-  <!-- info section -->
   <section class="info_section layout_padding">
     <div class="container">
-      <div class="info_social">
-        <div>
-          <a href="">
-            <img src="images/fb.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/twitter.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/linkedin.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/insta.png" alt="">
-          </a>
-        </div>
-      </div>
+
       <div>
         <p>
-          RAJAONARIVONY Sombiniaina Morgan ETU1437
+        RAJAONARIVONY Sombiniaina Morgan ETU1437
         </p>
       </div>
     </div>
   </section>
-
-  <!-- end info_section -->
 
 
 

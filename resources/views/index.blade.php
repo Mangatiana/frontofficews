@@ -28,8 +28,8 @@
   <link href="{{ secure_asset('assets/css/responsive.css') }}" rel="stylesheet" />
 </head>
 
-<body class="sub_page">
-<div class="hero_area">
+<body>
+  <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
       <div class="container-fluid">
@@ -63,91 +63,74 @@
       </div>
     </header>
     <!-- end header section -->
-</div>
 
-  <!-- contact section -->
+  </div>
 
-  <section class="contact_section layout_padding">
+  <!-- news section -->
+
+  <section class="news_section layout_padding">
     <div class="container">
       <div class="d-flex flex-column align-items-end">
         <div class="custom_heading-container">
           <hr>
           <h2>
-            Login
+            Lastest AI news
           </h2>
-        </div>
-      </div>
-      <div class="layout_padding-top layout_padding2-bottom">
-        <div class="row">
-          <div class="col-md-7">
 
-            <form action="{{route('connecter')}}" method="post">
-            @csrf
-              <div class="contact_form-container">
-                <div>
-                  <div>
-                    <input type="text" placeholder="User" name="user" value="momo">
-                  </div>
-                  <div class="">
-                    <input type="text" placeholder="Mot de passe" name="mdp" value="1437">
-                  </div>
-                  <div class="mt-5">
-                    <button type="submit">
-                      Connecter
-                    </button>
-                  </div>
-                </div>
+        </div>
+        <p>
+          Think futher
+        </p>
+      </div>
+
+      <div class="row">
+        @foreach($listInfo as $info)
+        <div class="col-md-4">
+          <div class="box">
+            <div class="img-box">
+              <img style="height: 200px; length: 100px;" src="{{ secure_asset('assets/images/'.$info->base) }}" alt="">
+            </div>
+            <div class="detail-box">
+              <h1>
+                {{$info->titre}}
+              </h1>
+              <p>
+              {{$info->sous_titre}}
+              </p>
+
+              <span classe="post-date">
+                Date: {{$info->date}}
+              </span>
+
+              <div>
+                <a href="/about/{{$info->idinf}}">
+                  Read More
+                </a>
               </div>
-            </form>
-
-          </div>
-          <div class="col-md-5">
-
+            </div>
           </div>
         </div>
+        @endforeach
       </div>
-
     </div>
   </section>
 
+  <!-- end news section -->
 
-  <!-- end contact section -->
+
 
   <!-- info section -->
   <section class="info_section layout_padding">
     <div class="container">
-      <div class="info_social">
-        <div>
-          <a href="">
-            <img src="images/fb.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/twitter.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/linkedin.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/insta.png" alt="">
-          </a>
-        </div>
-      </div>
       <div>
         <p>
-          RAJAONARIVONY Sombiniaina Morgan ETU1437
+        RAJAONARIVONY Sombiniaina Morgan ETU1437
         </p>
       </div>
     </div>
   </section>
 
   <!-- end info_section -->
-
 
 
   <script type="text/javascript" src="{{secure_asset('assets/js/jquery-3.4.1.min.js')}}"></script>

@@ -34,7 +34,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="">
+          <a class="navbar-brand" href="index.html">
             <img src="{{ secure_asset('assets/images/logo.png') }}" alt="">
             <span>
               AI ETU1437
@@ -47,6 +47,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+
             </div>
             <div class="quote_btn-container  d-flex justify-content-center">
               <a href="">
@@ -63,81 +64,44 @@
       </div>
     </header>
     <!-- end header section -->
-</div>
 
-  <!-- contact section -->
+  </div>
 
-  <section class="contact_section layout_padding">
+  <!-- about section -->
+  <section class="about_section layout_padding">
     <div class="container">
-      <div class="d-flex flex-column align-items-end">
-        <div class="custom_heading-container">
-          <hr>
-          <h2>
-            Login
-          </h2>
-        </div>
-      </div>
-      <div class="layout_padding-top layout_padding2-bottom">
-        <div class="row">
-          <div class="col-md-7">
-
-            <form action="{{route('connecter')}}" method="post">
-            @csrf
-              <div class="contact_form-container">
-                <div>
-                  <div>
-                    <input type="text" placeholder="User" name="user" value="momo">
-                  </div>
-                  <div class="">
-                    <input type="text" placeholder="Mot de passe" name="mdp" value="1437">
-                  </div>
-                  <div class="mt-5">
-                    <button type="submit">
-                      Connecter
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <h6>
+              Détail
+            </h6>
+            <div class="custom_heading-container">
+              <h1>
+              {{ $info[0]->titre }}
+              </h1>
+              <hr>
+            </div>
+            {!!$info[0]->description!!}
           </div>
-          <div class="col-md-5">
-
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{{ secure_asset('assets/images/'.$info[0]->base) }}" alt="">
+            <p>{{ $info[0]->source }}</p>
+            <p>Source: {{ $info[0]->source }}</p>
           </div>
         </div>
       </div>
 
     </div>
   </section>
+  <!-- end about section -->
 
-
-  <!-- end contact section -->
 
   <!-- info section -->
   <section class="info_section layout_padding">
     <div class="container">
-      <div class="info_social">
-        <div>
-          <a href="">
-            <img src="images/fb.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/twitter.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/linkedin.png" alt="">
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="images/insta.png" alt="">
-          </a>
-        </div>
-      </div>
       <div>
         <p>
           RAJAONARIVONY Sombiniaina Morgan ETU1437
@@ -147,8 +111,6 @@
   </section>
 
   <!-- end info_section -->
-
-
 
   <script type="text/javascript" src="{{secure_asset('assets/js/jquery-3.4.1.min.js')}}"></script>
   <script type="text/javascript" src="{{secure_asset('asset/js/bootstrap.js')}}"></script>
