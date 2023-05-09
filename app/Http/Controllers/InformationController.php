@@ -40,10 +40,6 @@ class InformationController extends Controller
         $listCat = $categorie->listerCategorie();
         $succes = 'ok';
 
-        if($request->hasFile('photo')){
-            $image->move(public_path('assets/images'), $filename);
-        }
-
         return view("insertion", compact("listCat", "succes"));
     }
 
