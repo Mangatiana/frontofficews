@@ -20,7 +20,7 @@ class InformationController extends Controller
         if($request->hasFile('photo')){
             $image = $request->file('photo');
             $filename = time().'.'.$image->getClientOriginalName();
-            $image->move(public_path('assets/images'), $filename);
+            //$image->move(public_path('assets/images'), $filename);
         }
 
         $legende = $request->input('legende');
@@ -31,14 +31,19 @@ class InformationController extends Controller
         $info = new information();
 
         $img->insertImage($filename, $legende, $source);
-        
+
         $idLastImg = $img->selectLastIdImage();
 
         $info->insertInfo($titre, $sous_titre, $description, $idLastImg->idimage, $idCategorie);
-        
+
         $categorie = new Categorie();
         $listCat = $categorie->listerCategorie();
         $succes = 'ok';
+
+        if($request->hasFile('photo')){
+            $image->move(public_path('assets/images'), $filename);
+        }
+
         return view("insertion", compact("listCat", "succes"));
     }
 
